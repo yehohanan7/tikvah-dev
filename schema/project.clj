@@ -8,7 +8,7 @@
                  [tikvah.commons "0.1.0-SNAPSHOT"]
                  [org.apache.thrift/libthrift "0.6.1"]]
 
-  :source-paths ["src/main/clojure"]
+  :source-paths ["src/main/clojure" "gen-java"]
   :test-paths ["src/test/clojure"]
 
 
