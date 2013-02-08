@@ -35,4 +35,13 @@
     )
   )
 
+(extend-type clojure.lang.IPersistentMap Schema
+  (serialize [this]
+    (println "serializing map...")
+    )
+
+  (deserialize [this bytes]
+    (println "deserializing map...")
+    )
+  )
 
