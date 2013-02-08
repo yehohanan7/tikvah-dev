@@ -29,13 +29,13 @@
     )
   )
 
-;(deftest should-serialize-maps
-;  (let [person {:person-id {:email "john@tikvah.com"}
-;                :person-properties {:name "John" :age 28}}
-;        serialized-person (serialize person)]
-;    (println (serialized-person))
-;    (is true)
-;    )
-;  )
+
+(deftest should-serialize-maps
+  (let [person {:person-id {:email "john@tikvah.com"}
+                :person-properties {:name "John" :age 28}}
+        serialized-person (serialize person)]
+    (is true)
+    )
+  )
 
 

@@ -30,8 +30,9 @@
     )
 
   (deserialize [this bytes]
-    (.deserialize de-serializer this bytes)
-    this
+    (let [_ (.deserialize de-serializer this bytes)]
+      this
+      )
     )
   )
 
@@ -41,7 +42,7 @@
     )
 
   (deserialize [this bytes]
-    (println "deserializing map...")
+    "deserializing map..."
     )
   )
 
