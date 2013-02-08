@@ -1,5 +1,5 @@
 (ns tikvah.schematest
-  (:require [tikvah.schema :as schema])
+  (:use tikvah.schema)
   (:use clojure.test)
   (:import [tikvah.test.model.person Person Gender PersonID PersonProperties]))
 
@@ -20,11 +20,22 @@
 
 (deftest should-serialize-and-deserialize-back
   (let [expected-properties (.getProperties sample-person)
-        serialized-data (schema/serialize sample-person)
-        actual-properties (.getProperties (schema/deserialize (Person.) serialized-data))
+        serialized-data (serialize sample-person)
+        actual-properties (.getProperties (deserialize (Person.) serialized-data))
         ]
 
-    (is (= (.getName actual-properties) "John"))
-    (is (= (.getAge expected-properties) 28))
+    (is (= "John" (.getName actual-properties)))
+    (is (= 28 (.getAge expected-properties)))
     )
   )
+
+;(deftest should-serialize-maps
+;  (let [person {:person-id {:email "john@tikvah.com"}
+;                :person-properties {:name "John" :age 28}}
+;        serialized-person (serialize person)]
+;    (println (serialized-person))
+;    (is true)
+;    )
+;  )
+
+

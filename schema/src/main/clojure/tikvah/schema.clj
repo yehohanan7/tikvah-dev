@@ -8,11 +8,31 @@
 (def serializer (TSerializer. (TBinaryProtocol$Factory.)))
 (def de-serializer (TDeserializer. (TBinaryProtocol$Factory.)))
 
-(defn serialize "Serializes the input boject into bytes" [input]
-  (.serialize serializer input)
+
+(defprotocol Schema
+  (serialize [this])
+  (deserialize [this bytes])
   )
 
-(defn deserialize "Desrializes the byte stream into corresponding objects" [container input]
-  (.deserialize de-serializer container input)
-  container
+(extend-type clojure.lang.IPersistentMap Schema
+  (serialize [this]
+    "map is serialized..."
+    )
+
+  (deserialize [this bytes]
+    "map is serialized to a specific target"
+    )
   )
+
+(extend-type java.lang.Object Schema
+  (serialize [this]
+    (.serialize serializer this)
+    )
+
+  (deserialize [this bytes]
+    (.deserialize de-serializer this bytes)
+    this
+    )
+  )
+
+
