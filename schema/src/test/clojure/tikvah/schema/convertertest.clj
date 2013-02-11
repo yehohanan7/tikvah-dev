@@ -1,7 +1,7 @@
-(ns tikvah.convertertest
+(ns tikvah.schema.convertertest
   (:use tikvah.schema)
   (:use tikvah.schema.locator)
-  (:use tikvah.record.converter)
+  (:use tikvah.schema.converter)
   (:use clojure.test))
 
 
