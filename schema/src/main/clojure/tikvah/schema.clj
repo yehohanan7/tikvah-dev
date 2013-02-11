@@ -3,8 +3,8 @@
        enforce data integrity at the persistent layer"}
   tikvah.schema
   (:use [tikvah.commons])
-  (:use [tikvah.schema-locator])
-  (:use [tikvah.record-converter])
+  (:use [tikvah.schema.locator])
+  (:use [tikvah.record.converter])
   (:import [org.apache.avro Schema]
            [org.apache.avro.generic GenericDatumWriter GenericDatumReader GenericData GenericData$Record]
            [org.apache.avro.io BinaryEncoder EncoderFactory]

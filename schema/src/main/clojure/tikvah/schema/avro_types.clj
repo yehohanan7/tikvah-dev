@@ -1,6 +1,6 @@
 (ns #^{:author "John"
        :doc "A collection of all avro types"}
-  tikvah.avro-types
+  tikvah.schema.avro-types
   (:use [tikvah.commons])
   (:import [org.apache.avro.util Utf8]))
 

@@ -1,9 +1,9 @@
 (ns #^{:author "John"
        :doc "used to convert clojure maps into avro model"}
-  tikvah.record-converter
+  tikvah.schema.converter
   (:use [tikvah.commons])
-  (:use [tikvah.avro-types])
-  (:use [tikvah.schema-locator])
+  (:use [tikvah.schema.avro-types])
+  (:use [tikvah.schema.locator])
   (:import [org.apache.avro Schema]
            [org.apache.avro.generic GenericData$Record]
            [org.apache.avro.util Utf8]))
