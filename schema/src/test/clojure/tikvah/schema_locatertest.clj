@@ -13,12 +13,5 @@
   (is (not (nil? (locate-schema (person {:first-name "John" :middle-name "Pradeep" :last-name "Vincent"})))))
   )
 
-(deftest should-serialize-maps
-  (let [input (person {:first-name "John" :middle-name "Pradeep" :last-name "Vincent"})]
-    (is (not (nil? (serialize input))))
-    )
-  )
-
-
 
 
