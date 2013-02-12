@@ -22,6 +22,12 @@
     )
   )
 
+(defn camel-to-dash [x]
+  (apply str (map #(if (Character/isUpperCase %)
+                     (str "-" (clojure.string/lower-case %))
+                     %)
+               x))
+  )
 
 (defn to-record [model]
   {:pre [(valid-model? model)]}
@@ -35,9 +41,11 @@
   )
 
 (defn to-model [record model]
-  {:pre [(not (nil? record))]}
+  {:pre [(and (not (nil? record)) (not (nil? model)))]}
   (let [schema (locate-schema model)
-        fields (map #(.name %) (.getFields schema))]
-    (println fields)
+        fields (map #(.name %) (.getFields schema))
+        getter #(.toString (.get record %))
+        key-value-mapper #(vector (keyword (camel-to-dash %)) (getter %))]
+    (apply merge {} (map key-value-mapper fields))
     )
   )

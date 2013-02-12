@@ -49,7 +49,7 @@
           reader (GenericDatumReader. schema)
           decoder (.binaryDecoder (DecoderFactory/get) bytes nil)
           record (.read reader nil decoder)
-          deserialized-model (to-model bytes model)]
+          deserialized-model (to-model record model)]
       deserialized-model
       )
     )
