@@ -1,7 +1,7 @@
-(ns tikvah.schema.convertertest
+(ns tikvah.schema.adaptertest
   (:use tikvah.schema)
   (:use tikvah.schema.locator)
-  (:use tikvah.schema.converter)
+  (:use tikvah.schema.adapter)
   (:use clojure.test))
 
 
@@ -10,6 +10,8 @@
   (is (= (dash-to-camel "first-name") "firstName"))
   (is (= (dash-to-camel "first-name-extended") "firstNameExtended"))
   )
+
+
 
 
 

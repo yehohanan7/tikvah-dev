@@ -1,6 +1,6 @@
 (ns #^{:author "John"
-       :doc "used to convert clojure maps into avro model"}
-  tikvah.schema.converter
+       :doc "used to convert clojure maps into avro model and vice versa"}
+  tikvah.schema.adapter
   (:use [tikvah.commons])
   (:use [tikvah.schema.avro-types])
   (:use [tikvah.schema.locator])
@@ -31,5 +31,13 @@
       (.put record (dash-to-camel k) (avro-value v))
       )
     record
+    )
+  )
+
+(defn to-model [record model]
+  {:pre [(not (nil? record))]}
+  (let [schema (locate-schema model)
+        fields (map #(.name %) (.getFields schema))]
+    (println fields)
     )
   )

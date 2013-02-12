@@ -4,32 +4,31 @@
   tikvah.schema
   (:use [tikvah.commons])
   (:use [tikvah.schema.locator])
-  (:use [tikvah.schema.converter])
+  (:use [tikvah.schema.adapter])
   (:import [org.apache.avro Schema]
            [org.apache.avro.generic GenericDatumWriter GenericDatumReader GenericData GenericData$Record]
-           [org.apache.avro.io BinaryEncoder EncoderFactory]
+           [org.apache.avro.io BinaryEncoder EncoderFactory DecoderFactory BinaryDecoder]
            [java.io ByteArrayOutputStream]
            [org.apache.avro.util Utf8]))
 
 
 (set! *warn-on-reflection* true)
 
-(defprotocol FlexiData
-  (serialize [model])
-  (deserialize [model bytes])
+(defprotocol FlexiDataSerializer
+  (serialize [this])
   )
 
-(extend-type java.lang.Object FlexiData
+(defprotocol FlexiDataDeserializer
+  (deserialize [this model])
+  )
+
+(extend-type java.lang.Object FlexiDataSerializer
   (serialize [model]
 
     )
-
-  (deserialize [model bytes]
-    )
   )
 
-(extend-type clojure.lang.IPersistentMap FlexiData
-
+(extend-type clojure.lang.IPersistentMap FlexiDataSerializer
   (serialize [model]
     (let [record (to-record model)
           stream (ByteArrayOutputStream.)
@@ -42,9 +41,17 @@
       (.toByteArray stream)
       )
     )
+  )
 
-  (deserialize [model bytes]
-    "deserializing map..."
+(extend-type (class (byte-array 0)) FlexiDataDeserializer
+  (deserialize [bytes model]
+    (let [schema (locate-schema model)
+          reader (GenericDatumReader. schema)
+          decoder (.binaryDecoder (DecoderFactory/get) bytes nil)
+          record (.read reader nil decoder)
+          deserialized-model (to-model bytes model)]
+      deserialized-model
+      )
     )
   )
 
