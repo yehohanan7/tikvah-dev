@@ -3,16 +3,20 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.4.0"]]
+  :dependencies [[org.clojure/clojure "1.4.0"]
+                 [org.clojure/clojurescript "0.0-1450"]
+                 [compojure "1.1.0"]
+                 [ring/ring-jetty-adapter "1.1.1"]]
 
   :source-paths ["src/main/clojure" "src/main/cljs"]
   :test-paths ["src/test/clojure"]
 
   :plugins [[lein-cljsbuild "0.2.7"]]
+
   :cljsbuild {
                :builds [{
                           :source-path "src/main/cljs"
                           :compiler {
-                                      :output-to "src/main/webapp/js/tikvah.js"
+                                      :output-to "resources/public/js/tikvah.js"
                                       :optimizations :whitespace
                                       :pretty-print true}}]})
