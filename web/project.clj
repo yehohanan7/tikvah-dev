@@ -1,4 +1,4 @@
-(defproject tikvah-web "0.1.0-SNAPSHOT"
+(defproject tikvah/web "0.1.0-SNAPSHOT"
   :description "Web Layer for tikvah"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
