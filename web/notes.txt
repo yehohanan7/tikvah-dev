@@ -16,3 +16,5 @@ brepl server
  (repl/repl env)
  )
 
+
+lein trampoline cljsbuild repl-listen
