@@ -7,7 +7,8 @@
                  [org.clojure/clojurescript "0.0-1450"]
                  [compojure "1.1.0"]
                  [domina "1.0.0"]
-                 [ring/ring-jetty-adapter "1.1.1"]]
+                 [ring/ring-jetty-adapter "1.1.1"]
+                 [clj-json/clj-json "0.5.1"]]
 
   :main tikvah.server
 
