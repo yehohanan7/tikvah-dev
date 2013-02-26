@@ -6,5 +6,3 @@
 
 (fact (not-nil? nil) => false)
 
-
-(fkey {:k :v})

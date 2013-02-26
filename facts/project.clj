@@ -5,7 +5,8 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [midje "1.4.0"]
-                 [yehohanan7/avro-clj "0.2"]]
+                 [tikvah/commons "0.1.0-SNAPSHOT"]
+                 [yehohanan7/avro-clj "0.3"]]
 
   :source-paths ["src/main/clojure"]
   :test-paths ["src/test/clojure"]

@@ -20,14 +20,6 @@
   (inc x)
   )
 
-(defn fkey "gets the first key in the map" [m]
-  (first (keys m))
-  )
-
-(defn fvalue "gets the first value in the map" [map]
-  (first (vals map))
-  )
-
 (def car first)
 
 (def cdr rest)
