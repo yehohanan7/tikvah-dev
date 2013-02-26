@@ -1,0 +1,5 @@
+Format a new distributed-filesystem:
+$ bin/hadoop namenode -format
+
+Start the hadoop daemons:
+$ bin/start-all.sh
