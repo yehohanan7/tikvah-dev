@@ -1,0 +1,1 @@
+angular.module('tikvah.catalog', ['tikvah.catalog.controllers', 'tikvah.catalog.controllers']);

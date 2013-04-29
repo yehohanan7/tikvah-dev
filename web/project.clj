@@ -12,18 +12,6 @@
 
   :main tikvah.server
 
-  :source-paths ["src/main/clojure" "src/main/cljs"]
+  :source-paths ["src/main/clojure"]
   :test-paths ["src/test/clojure"]
-
-  :plugins [[lein-cljsbuild "0.2.7"]]
-
-  :hooks [leiningen.cljsbuild]
-
-  :cljsbuild {
-               :builds [{
-                          :source-path "src/main/cljs"
-                          :crossovers [tikvah.shared]
-                          :compiler {
-                                      :output-to "resources/public/js/tikvah.js"
-                                      :optimizations :whitespace
-                                      :pretty-print true}}]})
+  )

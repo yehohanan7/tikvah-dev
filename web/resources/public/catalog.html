@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="tikvah">
+<html lang="en" ng-app="tikvah.catalog">
 <head>
     <meta charset="utf-8">
     <title>Bootstrap, from Twitter</title>
@@ -8,7 +8,8 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/jqtree.css.css" rel="stylesheet">
     <style>
         body {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -21,84 +22,45 @@
 
 <body>
 
-<div ng-controller="ProductCtrl">
-    <div id="productsModal" class="modal hide fade">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3>Search Results</h3>
-        </div>
-        <div class="modal-body">
-            <label>Results for {{searchKey}}</label>
-            <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>In Stock?</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="product in results" ng-click="select(product.id)">
-                    <td>{{product.id}}</td>
-                    <td>{{product.name}}</td>
-                    <td>{{product.price}}</td>
-                    <td><i class="icon-ok"></i></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">Tikvah</a>
 
-    <form ng-submit="find()">
-        <div class="input-append">
-            <input class="products-typeahead" type="text" ng-model="searchKey">
-
-            <button class="btn" type="submit">Search</button>
-        </div>
-    </form>
-
-    <ul class="nav nav-tabs">
-        <li><a href="#home" data-toggle="tab">Home</a></li>
-        <li><a href="#catalog" data-toggle="tab">Catalog</a></li>
-        <li><a class="active" href="#media" data-toggle="tab">Media</a></li>
-        <li><a href="#analytics" data-toggle="tab">Analytics</a></li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane" id="home">
-            home
-        </div>
-        <div class="tab-pane" id="catalog">
-            catalog
-        </div>
-        <div class="tab-pane active" id="media">
-
-            <div id="mediaCarousel" class="carousel slide">
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    <div ng-class="{active:$first, item:true}" ng-repeat="image in selected.media.photos">
-                        <img ng-src="{{image}}" >
-                    </div>
-                </div>
-                <!-- Carousel nav -->
-                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="tikvah.html">Home</a></li>
+                    <li class="active"><a href="catalog.html">Catalog</a></li>
+                    <li><a href="analytics.html">Analytics</a></li>
+                </ul>
             </div>
-        </div>
-        <div class="tab-pane" id="analytics">
-            analytics
+            <!--/.nav-collapse -->
         </div>
     </div>
+</div>
 
+<div ng-controller="CategoryController">
+
+    <div id="categoryTree">
+
+    </div>
 </div>
 
 
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
-<script src="../js/Product.js"></script>
-<script src="../js/config.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-</body>
+<script src="js/lib/bootstrap.min.js"></script>
 
+<script src="js/lib/tree.jquery.js"></script>
+
+<script src="js/tikvah/catalog/services/CategoryService.js"></script>
+<script src="js/tikvah/catalog/controllers/CategoryController.js"></script>
+<script src="js/tikvah/catalog/catalog.js"></script>
+
+</body>
 </html>
